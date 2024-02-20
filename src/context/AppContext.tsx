@@ -10,6 +10,7 @@ export const AppContextWrapper = ({ children }: Props) => {
   const [bill, setBill] = useState("");
   const [peopleAmount, setPeopleAmount] = useState("");
   const [tipPercent, setTipPercent] = useState("");
+  const [error, setError] = useState<string[]>([]);
   return (
     <AppContext.Provider
       value={{
@@ -19,6 +20,8 @@ export const AppContextWrapper = ({ children }: Props) => {
         setPeopleAmount,
         tipPercent,
         setTipPercent,
+        error,
+        setError,
       }}
     >
       {children}
