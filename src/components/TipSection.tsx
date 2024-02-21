@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAppContext } from "../context/AppContext";
 import Label from "./Label";
 import TipItem from "./TipItem";
 import Input from "./Input";
 
 const TipSection = () => {
-  const { tipPercent, setTipPercent } = useAppContext();
+  const { setTipPercent } = useAppContext();
   const [customTip, setCustomTip] = useState<string>("");
 
   const valueUpdater = (value: string) => {
@@ -35,10 +35,6 @@ const TipSection = () => {
       setTipPercent(event.target.value);
     }
   };
-
-  useEffect(() => {
-    console.log(tipPercent);
-  }, [tipPercent]);
 
   return (
     <div className="my-5">

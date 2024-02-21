@@ -5,6 +5,8 @@ interface AppContext {
   setPeopleAmount: (value: string) => void;
   tipPercent: string;
   setTipPercent: (value: string) => void;
-  error: string[];
-  setError: (value: string) => void;
+  error: {
+    [key: string]: string;
+  };
+  setError: React.Dispatch<React.SetStateAction<{}>>;
 }

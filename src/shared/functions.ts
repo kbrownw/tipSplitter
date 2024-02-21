@@ -15,3 +15,13 @@ export const toTwoDecimals = (input: string) => {
     return value;
   }
 };
+
+export const toInteger = (input: string) => {
+  let value = parseInt(input);
+
+  if (Number.isNaN(value)) {
+    return "0";
+  } else {
+    return value.toString();
+  }
+};
