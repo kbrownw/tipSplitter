@@ -35,7 +35,7 @@ const TotalsColumn = () => {
 
   return (
     <div className="grid w-full py-12 px-10 bg-very-dark-cyan rounded-[25px]">
-      <div className="flex flex-col mb-5 gap-5 overflow-x-scroll">
+      <div className="flex flex-col mb-5 gap-5 overflow-x-auto">
         <Totals text="Tip Amount" amount={tipAmount} />
         <Totals text="Total" amount={totalAmount} />
       </div>
