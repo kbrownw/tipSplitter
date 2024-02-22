@@ -9,4 +9,10 @@ interface AppContext {
     [key: string]: string;
   };
   setError: React.Dispatch<React.SetStateAction<{}>>;
+  billIsBlurred: boolean;
+  setBillIsBlurred: (value: boolean) => void;
+  peopleIsBlurred: boolean;
+  setPeopleIsBlurred: (value: boolean) => void;
+  customTip: string;
+  setCustomTip: (value: string) => void;
 }

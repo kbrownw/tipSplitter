@@ -2,6 +2,7 @@ import { useAppContext } from "../context/AppContext";
 import { useEffect, useState } from "react";
 import Totals from "./Totals";
 import { useZeroChecker } from "../hooks/useZeroChecker";
+import Reset from "./Reset";
 
 const TotalsColumn = () => {
   const { peopleAmount, bill, tipPercent } = useAppContext();
@@ -10,7 +11,7 @@ const TotalsColumn = () => {
   const { checkNotZero } = useZeroChecker();
 
   const calculate = () => {
-    if (tipPercent && bill && peopleAmount) {
+    if (tipPercent !== "" && bill !== "" && peopleAmount !== "") {
       if (checkNotZero(bill) && checkNotZero(peopleAmount)) {
         const tipAsPercent = Number(tipPercent) / 100;
         const tipTotal = Number(bill) * tipAsPercent;
@@ -22,6 +23,9 @@ const TotalsColumn = () => {
         setTipAmount("0.00");
         setTotalAmount("0.00");
       }
+    } else {
+      setTipAmount("0.00");
+      setTotalAmount("0.00");
     }
   };
 
@@ -30,11 +34,12 @@ const TotalsColumn = () => {
   }, [tipPercent, bill, peopleAmount]);
 
   return (
-    <div className="grid w-full py-14 px-10 bg-very-dark-cyan rounded-[25px] overflow-x-scroll">
-      <div className="flex flex-col gap-5">
+    <div className="grid w-full py-12 px-10 bg-very-dark-cyan rounded-[25px]">
+      <div className="flex flex-col mb-5 gap-5 overflow-x-scroll">
         <Totals text="Tip Amount" amount={tipAmount} />
         <Totals text="Total" amount={totalAmount} />
       </div>
+      <Reset />
     </div>
   );
 };

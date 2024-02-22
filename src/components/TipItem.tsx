@@ -28,7 +28,8 @@ const TipItem = ({ value, valueUpdater }: Props) => {
       <label
         htmlFor={value}
         className="w-full py-1 bg-very-dark-cyan rounded-md text-white text-center
-        hover:cursor-pointer peer-checked:bg-strong-cyan peer-checked:text-very-dark-cyan"
+        hover:cursor-pointer hover:bg-light-grayish-cyan hover:text-very-dark-cyan
+       peer-checked:bg-strong-cyan peer-checked:text-very-dark-cyan"
       >
         {value}%
       </label>

@@ -1,12 +1,10 @@
-import { useState } from "react";
 import { useAppContext } from "../context/AppContext";
 import Label from "./Label";
 import TipItem from "./TipItem";
 import Input from "./Input";
 
 const TipSection = () => {
-  const { setTipPercent } = useAppContext();
-  const [customTip, setCustomTip] = useState<string>("");
+  const { setTipPercent, customTip, setCustomTip } = useAppContext();
 
   const valueUpdater = (value: string) => {
     setTipPercent(value);
@@ -50,6 +48,7 @@ const TipSection = () => {
           handleChange={(e) => {
             handleCustomTip(e);
           }}
+          style={{ paddingLeft: "0px" }}
           value={customTip}
           placeholder="Custom"
         />

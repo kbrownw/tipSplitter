@@ -14,6 +14,7 @@ type Props = {
   altText: string;
   handleBlur?: React.FocusEventHandler<HTMLInputElement> | undefined;
   labelText: string;
+  blurred?: boolean;
 };
 
 const LabelWithNumberInput = ({
@@ -24,9 +25,9 @@ const LabelWithNumberInput = ({
   image,
   altText,
   handleBlur,
+  blurred = false,
 }: Props) => {
   const { error } = useAppContext();
-  const [isBlurred, setIsBlurred] = useState<boolean>(false);
   const { checkNotZero } = useZeroChecker();
   const [inErrorState, setInErrorState] = useState<boolean>(false);
   const { addError, removeError } = useErrorHandler();
@@ -37,7 +38,7 @@ const LabelWithNumberInput = ({
   };
 
   useEffect(() => {
-    if (isBlurred) {
+    if (blurred) {
       if (checkNotZero(value)) {
         removeError(keyName);
         setInErrorState(false);
@@ -45,8 +46,10 @@ const LabelWithNumberInput = ({
         addError(keyName, "Can't be zero");
         setInErrorState(true);
       }
+    } else {
+      setInErrorState(false);
     }
-  }, [value]);
+  }, [value, blurred]);
 
   return (
     <div>
@@ -66,8 +69,6 @@ const LabelWithNumberInput = ({
           if (handleBlur) {
             handleBlur(e);
           }
-
-          setIsBlurred(true);
         }}
       />
     </div>

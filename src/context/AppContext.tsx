@@ -11,6 +11,9 @@ export const AppContextWrapper = ({ children }: Props) => {
   const [peopleAmount, setPeopleAmount] = useState("");
   const [tipPercent, setTipPercent] = useState("");
   const [error, setError] = useState({});
+  const [billIsBlurred, setBillIsBlurred] = useState<boolean>(false);
+  const [peopleIsBlurred, setPeopleIsBlurred] = useState<boolean>(false);
+  const [customTip, setCustomTip] = useState<string>("");
   return (
     <AppContext.Provider
       value={{
@@ -22,6 +25,12 @@ export const AppContextWrapper = ({ children }: Props) => {
         setTipPercent,
         error,
         setError,
+        billIsBlurred,
+        setBillIsBlurred,
+        peopleIsBlurred,
+        setPeopleIsBlurred,
+        customTip,
+        setCustomTip,
       }}
     >
       {children}

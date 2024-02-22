@@ -6,10 +6,19 @@ import DollarSign from "../assets/images/icon-dollar.svg";
 import { toInteger, toTwoDecimals } from "../shared/functions";
 
 const InputsColumn = () => {
-  const { bill, setBill, peopleAmount, setPeopleAmount } = useAppContext();
+  const {
+    bill,
+    setBill,
+    billIsBlurred,
+    setBillIsBlurred,
+    peopleAmount,
+    setPeopleAmount,
+    peopleIsBlurred,
+    setPeopleIsBlurred,
+  } = useAppContext();
 
   return (
-    <div className="flex flex-col w-full p-2 gap-6">
+    <div className="flex flex-col w-full mb-5 p-2 gap-6 md:mb-0">
       <LabelWithNumberInput
         labelText="Bill"
         value={bill}
@@ -17,7 +26,11 @@ const InputsColumn = () => {
         image={DollarSign}
         altText="Dollar sign icon"
         keyName="bill"
-        handleBlur={() => setBill(toTwoDecimals(bill))}
+        blurred={billIsBlurred}
+        handleBlur={() => {
+          setBill(toTwoDecimals(bill));
+          setBillIsBlurred(true);
+        }}
       />
       <TipSection />
       <LabelWithNumberInput
@@ -27,7 +40,11 @@ const InputsColumn = () => {
         image={PersonIcon}
         altText="Person Icon"
         keyName="people"
-        handleBlur={() => setPeopleAmount(toInteger(peopleAmount))}
+        blurred={peopleIsBlurred}
+        handleBlur={() => {
+          setPeopleAmount(toInteger(peopleAmount));
+          setPeopleIsBlurred(true);
+        }}
       />
     </div>
   );
